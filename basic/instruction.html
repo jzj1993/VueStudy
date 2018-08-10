@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    <style>
+        .bold {
+            color: #F99;
+        }
+    </style>
+</head>
+<body>
+<div id="vue_det">
+
+    <h3>v-html</h3>
+
+    <p v-html="msg"></p>
+
+    <h3>v-if</h3>
+
+    <p>count: {{count}}</p>
+
+    <p v-if="count%2==1">奇数</p>
+
+    <p v-else>偶数</p>
+
+    <h3>v-show</h3>
+
+    <p v-show="true">v-if直接控制是否有HTML标签；v-show通过CSS属性控制显示</p>
+
+    <p v-show="false">不显示</p>
+
+    <h3>v-for</h3>
+
+    <span v-for="d in [1,2,3]">
+         {{d}}
+    </span>
+
+    <h3>v-bind</h3>
+
+    <p>v-bind可以绑定HTML属性，例如class。v-bind支持"{xxx:bool}"的格式，bool值为true时才有xxx。v-bind可以缩写为":"</p>
+
+    <p>count: {{count}}</p>
+
+    <span v-bind:class="{bold:count%2==1}">奇数</span>
+
+    <span :class="{bold:count%2==0}">偶数</span>
+
+    <h3>v-on</h3>
+
+    <p>v-on可以监听DOM事件，例如click。v-on可以缩写为"@"。</p>
+
+    <button v-on:click="click()">Click</button>
+
+    <button @click="click()">Click</button>
+
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#vue_det',
+        data: {
+            count: 0,
+            msg: "Message"
+        },
+        methods: {
+            click: function () {
+                alert("Hi")
+            }
+        }
+    });
+    setInterval(function () {
+        vm.count++
+    }, 1000)
+</script>
+</body>
+</html>
